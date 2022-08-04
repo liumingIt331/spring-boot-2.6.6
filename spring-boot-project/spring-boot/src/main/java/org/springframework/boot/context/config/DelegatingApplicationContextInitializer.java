@@ -50,6 +50,8 @@ public class DelegatingApplicationContextInitializer
 
 	@Override
 	public void initialize(ConfigurableApplicationContext context) {
+		// 扩展点，可以通过环境变量或者配置文件配置context.initializer.classes属性，指定ApplicationContextInitializer类名，
+		// 立即调用initialize方法进行初始化操作
 		ConfigurableEnvironment environment = context.getEnvironment();
 		List<Class<?>> initializerClasses = getInitializerClasses(environment);
 		if (!initializerClasses.isEmpty()) {
